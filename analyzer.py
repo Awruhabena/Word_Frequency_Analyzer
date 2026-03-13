@@ -100,3 +100,17 @@ def display_report(final_filter):
     for word, count in top_10:
         print(f"{rank} | {word} | {count}")
         rank += 1
+
+
+
+#FEATURE 6
+def search_word(final_filter):
+    word_searched = input("Enter word to be searched:")
+    word_searched = word_searched.lower()
+    if word_searched in final_filter:
+        count = final_filter[word_searched]
+        print(f"The word '{word_searched}' appeared {count} times")
+    else:
+        print(f"The word '{word_searched}' appeared 0 times.") 
+
+
