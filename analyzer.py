@@ -10,6 +10,7 @@ def get_text_from_input():
     return " ".join(user_lines) # This is to join all the lines in the list into a single string and return it
         
 
+
 #FEATURE 1 b
 
 def get_text_from_file(file_name):
@@ -20,3 +21,14 @@ def get_text_from_file(file_name):
     except FileNotFoundError:
             print (f"Error: The file was not found")
             return ""
+
+
+
+#FEATURE 2+
+def clean_text(raw_text):
+    cleaned_text = raw_text.lower() # Convert the text to lowercase
+    punctuations = """.!()-[],{};:'","""
+    for punctuation in punctuations:
+        cleaned_text = cleaned_text.replace(punctuation, "") # Remove each punctuation character from the text
+    cleaned_text = cleaned_text.split() # Split the cleaned text into a list of words
+    return cleaned_text
