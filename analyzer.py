@@ -114,3 +114,15 @@ def search_word(final_filter):
         print(f"The word '{word_searched}' appeared 0 times.") 
 
 
+#FEATURE 7
+def export_report(raw_frequency_dict):
+     # Sort all the words
+     sorted_dict = sorted(raw_frequency_dict.items(), key=lambda x: x[1], reverse=True)
+
+     with open("report.txt", "w") as file: # this opens a file and writes in it. After it gives it an alias "file"
+         file.write("=== FULL WORD FREQUENCY REPORT ===\n")
+         file.write("Rank | Word | Frequency\n")
+         rank = 1
+         for word, count in sorted_dict:
+            file.write(f"{rank} | {word} | {count}\n")
+            rank += 1
