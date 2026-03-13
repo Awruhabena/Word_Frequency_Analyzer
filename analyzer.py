@@ -1,3 +1,12 @@
+
+STOPWORDS = set([
+    "the", "a", "an", "and", "is", "in", "to", "of", "it", "i", "am"
+])
+
+#Python can check if a word is in a 'set' much faster than if it were in a standard list.
+
+
+
 #FEATURE 1 a  +
 def get_text_from_input():
     user_lines= []# Empty list to store user input lines
@@ -44,3 +53,12 @@ def count_frequences(cleaned_text):
         else:
             freq_dict[word] = 1 # If it is not, add it to the dictionary with a count of 1
     return freq_dict
+
+
+#FEATURE 4 +
+def remove_stopwords(freq_dict):    
+    filtered_dict = {} # Initialize an empty dictionary to store filtered word frequencies  
+    for word,count in freq_dict.items():# .items() lets us look at both the word AND its count at the same time.
+        if word not in STOPWORDS:
+            filtered_dict[word] = count # If the word is not a stopword, add it to the filtered dictionary with its count
+    return filtered_dict
