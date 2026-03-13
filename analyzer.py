@@ -62,3 +62,41 @@ def remove_stopwords(freq_dict):
         if word not in STOPWORDS:
             filtered_dict[word] = count # If the word is not a stopword, add it to the filtered dictionary with its count
     return filtered_dict
+
+
+#FEATURE 5 a
+# key=lambda x: x[1]: 'lambda' is a quick, nameless mini-function.
+    #    'x' represents one pair, like ("apple", 5). In programming, we count starting at 0.
+    #    So, x[0] is "apple", and x[1] is 5. This tells Python: "Sort these pairs by looking only at the count"
+    # reverse=True: Sorts from biggest to smallest (Descending) instead of smallest to biggest.
+def get_top_words(final_filter, n=10):
+   
+    sorted_dict = sorted(final_filter.items(), key=lambda x: x[1], reverse=True) 
+    
+    top_n_words = sorted_dict[:n] #slicing
+    
+    return top_n_words
+
+#FEATURE 5 b
+def display_report(final_filter):   
+   
+    total_word_count = sum(final_filter.values()) 
+    
+    
+    unique_word_count = len(final_filter) 
+    
+    print(" WORD FREQUENCY REPORT ")
+    print(f"Total Words: {total_word_count}")
+    print(f"Unique Words: {unique_word_count}")
+   
+    
+    # Call Top 10 function to get the data
+    top_10 = get_top_words(final_filter, n=10)
+    
+    print("Rank | Word | Frequency")
+    rank = 1
+   
+   # Loop through our Top 10 list and print each one out
+    for word, count in top_10:
+        print(f"{rank} | {word} | {count}")
+        rank += 1
