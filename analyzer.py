@@ -120,9 +120,9 @@ def search_word(final_filter):
 
 
 #FEATURE 7
-def export_report(raw_frequency_dict):
+def export_report(final_filter):
      # Sort all the words
-     sorted_dict = sorted(raw_frequency_dict.items(), key=lambda x: x[1], reverse=True)
+     sorted_dict = sorted(final_filter.items(), key=lambda x: x[1], reverse=True)
 
      with open("report.txt", "w") as file: # this opens a file and writes in it. After it gives it an alias "file"
          file.write("=== FULL WORD FREQUENCY REPORT ===\n")
@@ -180,7 +180,7 @@ def main():
         elif menu_choice == "2":
             search_word(final_filter)
         elif menu_choice == "3":
-            export_report(raw_frequency_dict)
+            export_report(final_filter)
         elif menu_choice == "4":
             print("Exiting the analyzer. Goodbye!👋")
             break # Breaks the loop and ends the program
